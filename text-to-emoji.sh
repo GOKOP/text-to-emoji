@@ -3,7 +3,7 @@
 # substitute $1 characters with appropiate dic.list entry
 function subst() {
 	snip=${orig::$1}
-	match=$(cat dic.list | egrep "^$snip " | head -n 1 | awk '{print $2}')
+	match=$(cat dic.list | grep -F "$snip " | head -n 1 | awk '{print $2}')
 	[ -z $match ] && return 1
 
 	orig=${orig:$1}
